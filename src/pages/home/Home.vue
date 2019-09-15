@@ -1,11 +1,17 @@
 <template>
   <div>
-    Hello World
+      <home-header></home-header>
   </div>
 </template>
 <script>
+import HomeHeader from './components/Header'
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: {HomeHeader},
+  comments: {
+    // 全写 HomeHeader: HomeHeader
+    HomeHeader
+  }
 }
 </script>
 <style>
