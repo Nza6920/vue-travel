@@ -4,7 +4,7 @@
       <ul>
         <li class="item border-bottom" v-for="item of recommendList" :key="item.id">
           <div>
-            <img class="item-img" :src="item.imgUrl" />
+            <img class="item-img" :src="item.imgUrl"/>
           </div>
           <div class="item-info">
             <p class="item-title">{{ item.title }}</p>
