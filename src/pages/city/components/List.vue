@@ -30,13 +30,14 @@
       </div>
       <div class="area"
            v-for="(item, key) of cities"
-           :key="key">
+           :key="key"
+           :ref="key">
         <div class="title border-topbottom">{{ key }}</div>
         <div class="item-list">
           <div class="item border-bottom"
                v-for="innerItem of item"
                :key="innerItem.id">
-            {{innerItem.name}}
+            {{ innerItem.name }}
           </div>
         </div>
       </div>
@@ -48,11 +49,21 @@ import Bscroll from 'better-scroll'
 export default {
   props: {
     hot: Array,
-    cities: Object
+    cities: Object,
+    letter: String
   },
   name: 'CityList',
   mounted () {
     this.scroll = new Bscroll(this.$refs.wrapper)
+  },
+  watch: {
+    letter () {
+      if (this.letter) {
+        // 获取到对应字母的区域
+        const element = this.$refs[this.letter][0]
+        this.scroll.scrollToElement(element)
+      }
+    }
   }
 }
 </script>
