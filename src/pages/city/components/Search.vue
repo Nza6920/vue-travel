@@ -9,7 +9,8 @@
       <ul>
         <li class="search-item border-bottom"
             v-for="item of list"
-            :key="item.id">
+            :key="item.id"
+            @click="handleCityClick(item.name)">
           {{ item.name }}
         </li>
         <li v-show="hasNoData"
@@ -22,6 +23,7 @@
 </template>
 <script>
 import Bscroll from 'better-scroll'
+import { mapMutations } from 'vuex'
 export default {
   props: {
     cities: Object
@@ -33,6 +35,17 @@ export default {
       list: [],
       timer: null
     }
+  },
+  methods: {
+    handleCityClick (city) {
+      // 派发一个 changeCity 的 action
+      // this.$store.dispatch('changeCity', city)
+      // 也可以直接调用 mutation
+      // this.$store.commit('changeCity', city)
+      this.changeCity(city) // 简便写法
+      this.$router.push('/')
+    },
+    ...mapMutations(['changeCity'])
   },
   computed: {
     hasNoData () {

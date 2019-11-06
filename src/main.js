@@ -7,6 +7,7 @@ import 'styles/reset.css'
 import 'styles/border.css'
 import 'styles/iconfont.css'
 import 'swiper/dist/css/swiper.css'
+import store from './store/index'
 
 Vue.config.productionTip = false
 // 使用fastClick 解决移动端点击事件会延迟 300ms 执行的问题
@@ -18,7 +19,8 @@ Vue.use(VueAwesomeSwiper)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  router,
-  components: { App },
+  router, // 键值一样可省略
+  store,
+  components: {App},
   template: '<App/>'
 })
