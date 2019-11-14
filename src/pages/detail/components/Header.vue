@@ -45,6 +45,9 @@ export default {
   },
   activated () {
     window.addEventListener('scroll', this.handleScroll)
+  },
+  deactivated () { // 页面即将被隐藏
+    window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
@@ -63,7 +66,6 @@ export default {
     .header-abs-back
       color #fff
       font-size .4rem
-      padding-left .17rem
   .header-fixed
     position fixed
     top 0
